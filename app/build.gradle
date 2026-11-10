@@ -1,0 +1,78 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-android-extensions'
+    id 'kotlin-kapt'
+}
+
+def signingProperties = new Properties()
+def signingPropertiesFile = rootProject.file('local.properties')
+if (signingPropertiesFile.exists()) {
+    signingPropertiesFile.withInputStream { signingProperties.load(it) }
+}
+
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+
+    dataBinding {
+        enabled true
+    }
+
+    defaultConfig {
+        applicationId rootProject.ext.android.applicationId
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        ndk { abiFilters "armeabi-v7a", "arm64-v8a" }
+    }
+
+    signingConfigs {
+        release {
+            storeFile rootProject.file(signingProperties.getProperty('SIGNING_STORE_FILE', 'release.keystore'))
+            keyAlias signingProperties.getProperty('SIGNING_KEY_ALIAS')
+            storePassword signingProperties.getProperty('SIGNING_STORE_PASSWORD')
+            keyPassword signingProperties.getProperty('SIGNING_KEY_PASSWORD')
+        }
+    }
+
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.release
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        release {
+            signingConfig signingConfigs.release
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+    kotlinOptions {
+        jvmTarget = '11'
+    }
+    sourceSets {
+        test.resources.srcDirs += ['src/main/assets']
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar', '*.aar'], dir: 'libs')
+    implementation project(':common')
+    implementation 'com.amap.api:3dmap-location-search:10.1.200_loc6.4.9_sea9.7.4'
+    implementation 'com.baidu.lbsyun:BaiduMapSDK_Map:8.2.0'
+    implementation 'com.baidu.lbsyun:BaiduMapSDK_Search:8.2.0'
+    implementation 'com.baidu.lbsyun:BaiduMapSDK_Location:9.7.0'
+    implementation 'com.github.tiann:FreeReflection:3.1.0'
+    testImplementation rootProject.ext.support.junit
+}

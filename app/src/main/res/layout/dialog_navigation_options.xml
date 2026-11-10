@@ -1,0 +1,27 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical"
+    android:padding="22dp" android:background="@drawable/shape_round_18_color_white">
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="路线与行驶" android:textSize="18sp" android:textStyle="bold" android:textColor="@color/home_text_primary" />
+    <ScrollView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:layout_marginTop="12dp">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+            <TextView android:id="@+id/tv_options_provider" android:layout_width="match_parent" android:layout_height="wrap_content" android:textSize="12sp" android:textColor="@color/home_text_secondary" />
+            <RadioGroup android:id="@+id/rg_driving_preference" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="6dp" android:orientation="vertical" />
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="14dp" android:text="行驶方式" android:textSize="14sp" android:textStyle="bold" android:textColor="@color/home_text_primary" />
+            <RadioGroup android:id="@+id/rg_motion_mode" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+                <androidx.appcompat.widget.AppCompatRadioButton android:id="@+id/rb_motion_constant" android:layout_width="0dp" android:layout_height="48dp" android:layout_weight="1" android:text="匀速回放" android:textSize="13sp" android:textColor="@color/home_text_primary" android:buttonTint="@color/master_color" />
+                <androidx.appcompat.widget.AppCompatRadioButton android:id="@+id/rb_motion_realistic" android:layout_width="0dp" android:layout_height="48dp" android:layout_weight="1" android:text="真实行驶" android:textSize="13sp" android:textColor="@color/home_text_primary" android:buttonTint="@color/master_color" />
+            </RadioGroup>
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="真实行驶时，设置速度为最高速度；自动起步加速、停车减速和弯道降速。" android:textSize="12sp" android:textColor="@color/home_text_secondary" />
+            <androidx.appcompat.widget.AppCompatCheckBox android:id="@+id/cb_junction_stops" android:layout_width="match_parent" android:layout_height="48dp" android:layout_marginTop="10dp" android:text="路口模拟停车（驾车）" android:textSize="14sp" android:textColor="@color/home_text_primary" android:buttonTint="@color/master_color" />
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="参考地图提供的红绿灯数量和路段信息估算停车点。停车位置、灯色与等待时间均为模拟，不是实时红绿灯数据。" android:textSize="12sp" android:textColor="@color/home_text_secondary" />
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="每次停车时间（秒）" android:textSize="13sp" android:textColor="@color/home_text_primary" android:labelFor="@id/et_stop_seconds" />
+            <EditText android:id="@+id/et_stop_seconds" android:layout_width="match_parent" android:layout_height="48dp" android:inputType="number" android:maxLength="3" android:singleLine="true" android:hint="5～120" android:textSize="14sp" android:textColor="@color/home_text_primary" />
+            <TextView android:id="@+id/tv_navigation_options_error" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:textSize="12sp" android:textColor="@color/danger_red" android:visibility="gone" android:accessibilityLiveRegion="polite" />
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="保存后用于下一次规划。收藏道路保留原轨迹，修改路线偏好后会重新规划。" android:textSize="12sp" android:textColor="@color/home_text_secondary" />
+        </LinearLayout>
+    </ScrollView>
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="14dp" android:orientation="horizontal">
+        <androidx.appcompat.widget.AppCompatButton android:id="@+id/btn_navigation_options_cancel" android:layout_width="0dp" android:layout_height="44dp" android:layout_weight="1" android:minHeight="0dp" android:background="@drawable/shape_round_30_color_grey" android:text="取消" android:textSize="14sp" android:textAllCaps="false" android:textColor="@color/home_text_secondary" />
+        <androidx.appcompat.widget.AppCompatButton android:id="@+id/btn_navigation_options_save" android:layout_width="0dp" android:layout_height="44dp" android:layout_weight="1" android:layout_marginStart="12dp" android:minHeight="0dp" android:background="@drawable/shape_round_30_color_primary" android:text="保存设置" android:textSize="14sp" android:textAllCaps="false" android:textColor="@color/white" />
+    </LinearLayout>
+</LinearLayout>

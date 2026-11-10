@@ -1,0 +1,43 @@
+# IDE and generated build files
+*.iml
+.idea/
+.gradle/
+**/build/
+.externalNativeBuild/
+.cxx/
+.DS_Store
+
+# Local configuration, credentials and signing material
+local.properties
+local.*.properties
+!local.properties.example
+.env
+.env.*
+!.env.example
+*.jks
+*.keystore
+*.p12
+*.pfx
+*.pem
+*.key
+/app/key
+/tudou
+/secrets/
+/.tools/
+
+# Device logs, captures and private backups
+*.log
+/captures/
+/logs/
+/backups/
+/device-*/
+
+# Historical download / donation images, not application resources
+/img/
+
+# Publish only the current reviewed release artifacts
+/dist/*
+!/dist/豆位-2.5.18-双地图版.apk
+!/dist/豆位-2.5.18-双地图版.apk.sha256
+!/dist/豆位-2.5.18-说明.md
+!/dist/豆位-2.5.18-验证结果.json

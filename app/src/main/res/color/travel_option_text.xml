@@ -1,0 +1,4 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_checked="true" android:color="@color/master_color"/>
+    <item android:color="@color/home_text_secondary"/>
+</selector>

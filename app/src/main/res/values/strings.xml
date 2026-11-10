@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">豆位</string>
+    <string name="change_mock">切换</string>
+    <string name="setting">设置</string>
+    <string name="confirm">确认</string>
+    <string name="receiver_hint">
+       Intent intentBroadcast = new Intent();\n
+       intentBroadcast.setAction(\"com.laozhang.mockgps.navi\");\n
+       intentBroadcast.putExtra(\"start\", \"116.419431,40.028795\");\n
+       intentBroadcast.putExtra(\"end\", \"116.409816,40.05139\");\n
+       //bd09   gps84   gcj02\n
+       intentBroadcast.putExtra(\"type\", \"gcj02\");\n//
+       //startNavi  stopNavi\n
+       intentBroadcast.putExtra(\"event\", \"startNavi\");\n
+       sendBroadcast(intentBroadcast);
+    </string>
+    <string name="file_navi_hint">
+       坐标类型：gcj02\n
+       数据格式：116.123123,40.123123;116.123123,40.123123;116.123123,40.123123;116.123123,40.123123;116.123123,40.123123;116.123123,40.123123…
+    </string>
+    <string name="poi_list_history_hint">历史数据（最多10条，长按删除单条）</string>
+</resources>

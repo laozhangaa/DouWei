@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable name="poiName" type="String" />
+        <variable name="isWay" type="Boolean" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="76dp"
+        android:background="?attr/selectableItemBackground">
+
+        <View
+            android:id="@+id/route_dot"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_marginStart="3dp"
+            android:layout_marginTop="34dp"
+            android:background="@drawable/bg_route_start"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_route_role"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="12dp"
+            android:includeFontPadding="false"
+            android:text="起点"
+            android:textColor="#7B8794"
+            android:textSize="11sp"
+            app:layout_constraintStart_toEndOf="@id/route_dot"
+            app:layout_constraintEnd_toStartOf="@id/iv_move"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_navi_name_end"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:layout_marginBottom="14dp"
+            android:ellipsize="end"
+            android:includeFontPadding="false"
+            android:maxLines="2"
+            android:text="@{poiName}"
+            android:textColor="@color/black_80"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@id/tv_route_role"
+            app:layout_constraintEnd_toStartOf="@id/iv_move"
+            app:layout_constraintTop_toBottomOf="@id/tv_route_role"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_move"
+            android:layout_width="36dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="2dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="按住拖动，调整地点顺序"
+            android:padding="9dp"
+            android:src="@drawable/ic_drag_dots"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/iv_remove" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_remove"
+            android:layout_width="32dp"
+            android:layout_height="48dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription='@{isWay ? "删除途经点" : "选择地点"}'
+            android:padding="6dp"
+            android:src="@{isWay ? @drawable/ic_route_remove : @drawable/ic_route_chevron}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable name="clickListener" type="OnClickListener" />
+        <import type="android.view.View.OnClickListener" />
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <FrameLayout
+            android:id="@+id/ll_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <include
+                android:id="@+id/include_location_card"
+                layout="@layout/layout_location_card"
+                tools:clickListener="@{clickListener}" />
+            <include
+                android:id="@+id/include_navi_card"
+                layout="@layout/layout_navi_card"
+                android:visibility="gone"
+                tools:clickListener="@{clickListener}" />
+        </FrameLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="15dp"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/bg_home_status"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:paddingHorizontal="14dp"
+            android:paddingVertical="12dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+            <View
+                android:id="@+id/simulation_status_dot"
+                android:layout_width="8dp"
+                android:layout_height="8dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/bg_home_status_dot"
+                android:importantForAccessibility="no" />
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:accessibilityLiveRegion="polite"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/tv_simulation_status"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="未启动模拟"
+                    android:textColor="@color/home_text_primary"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/tv_simulation_detail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:text="选择位置或路线后启动"
+                    android:textColor="@color/home_text_secondary"
+                    android:textSize="11sp" />
+            </LinearLayout>
+            <TextView
+                android:id="@+id/btn_simulation_pause"
+                android:layout_width="wrap_content"
+                android:layout_height="44dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/bg_route_action"
+                android:gravity="center"
+                android:paddingHorizontal="12dp"
+                android:text="暂停"
+                android:textColor="@color/master_color"
+                android:textSize="12sp"
+                android:visibility="gone" />
+            <TextView
+                android:id="@+id/btn_simulation_stop"
+                android:layout_width="wrap_content"
+                android:layout_height="44dp"
+                android:layout_marginStart="6dp"
+                android:background="?attr/selectableItemBackground"
+                android:gravity="center"
+                android:paddingHorizontal="10dp"
+                android:text="停止"
+                android:textColor="@color/danger_red"
+                android:textSize="12sp"
+                android:visibility="gone" />
+            </LinearLayout>
+            <TextView android:id="@+id/tv_navigation_progress" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:textSize="11sp" android:lineSpacingExtra="3dp" android:textColor="@color/home_text_secondary" android:visibility="gone" />
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="6dp" android:orientation="horizontal">
+                <TextView android:id="@+id/btn_navigation_progress" android:layout_width="0dp" android:layout_height="44dp" android:layout_weight="1" android:gravity="center" android:background="?attr/selectableItemBackground" android:text="调整进度" android:textSize="12sp" android:textColor="@color/master_color" android:visibility="gone" />
+                <TextView android:id="@+id/btn_restore_navigation" android:layout_width="0dp" android:layout_height="44dp" android:layout_weight="1" android:gravity="center" android:background="?attr/selectableItemBackground" android:text="恢复上次导航" android:textSize="12sp" android:textColor="@color/master_color" android:visibility="gone" />
+                <TextView android:id="@+id/btn_simulation_diagnostics" android:layout_width="0dp" android:layout_height="44dp" android:layout_weight="1" android:gravity="center" android:background="?attr/selectableItemBackground" android:text="运行诊断" android:textSize="12sp" android:textColor="@color/home_text_secondary" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="15dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingStart="2dp"
+                android:paddingEnd="8dp"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="最近使用"
+                    android:textColor="@color/home_text_primary"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/tv_history_hint"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:text="点按复用 · 长按删除 · 最多10条"
+                    android:textColor="@color/home_text_secondary"
+                    android:textSize="11sp" />
+            </LinearLayout>
+            <TextView
+                android:id="@+id/tv_clean_cache"
+                clickListener="@{clickListener}"
+                android:layout_width="wrap_content"
+                android:layout_height="44dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:gravity="center"
+                android:minWidth="48dp"
+                android:paddingHorizontal="10dp"
+                android:text="清空"
+                android:textColor="@color/home_text_secondary"
+                android:textSize="12sp" />
+        </LinearLayout>
+    </LinearLayout>
+</layout>

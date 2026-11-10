@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable name="clickListener" type="OnClickListener" />
+        <import type="android.view.View.OnClickListener" />
+    </data>
+    <LinearLayout
+        android:id="@+id/ll_location_card"
+        clickListener="@{clickListener}"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/shape_round_18_color_white"
+        android:elevation="2dp"
+        android:orientation="vertical"
+        android:padding="16dp">
+        <TextView
+            android:id="@+id/tv_location_hint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="目标位置"
+            android:textColor="@color/home_text_primary"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="16dp"
+            android:minHeight="76dp">
+            <ImageView
+                android:id="@+id/iv_location_marker"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="@drawable/bg_home_icon"
+                android:importantForAccessibility="no"
+                android:padding="8dp"
+                android:src="@drawable/ic_map_locate"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+            <TextView
+                android:id="@+id/tv_location_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginTop="10dp"
+                android:ellipsize="end"
+                android:includeFontPadding="false"
+                android:maxLines="3"
+                android:text="点击选择模拟位置"
+                android:textColor="@color/home_text_primary"
+                android:textSize="14sp"
+                app:layout_constraintStart_toEndOf="@id/iv_location_marker"
+                app:layout_constraintEnd_toStartOf="@id/iv_location_arrow"
+                app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/tv_location_latlng"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="10dp"
+                android:includeFontPadding="false"
+                android:text="在地图上搜索或拖动选点"
+                android:textColor="@color/home_text_secondary"
+                android:textSize="11sp"
+                app:layout_constraintStart_toStartOf="@id/tv_location_name"
+                app:layout_constraintEnd_toEndOf="@id/tv_location_name"
+                app:layout_constraintTop_toBottomOf="@id/tv_location_name"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintVertical_bias="0" />
+            <ImageView
+                android:id="@+id/iv_location_arrow"
+                android:layout_width="20dp"
+                android:layout_height="24dp"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_route_chevron"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal">
+            <TextView android:id="@+id/btn_location_favorites" style="@style/FavoriteAction" clickListener="@{clickListener}" android:text="我的位置" />
+            <TextView android:id="@+id/btn_save_location" style="@style/FavoriteAction" android:layout_marginStart="10dp" clickListener="@{clickListener}" android:text="收藏位置" />
+        </LinearLayout>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_start_location"
+            clickListener="@{clickListener}"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:background="@drawable/shape_round_30_color_primary"
+            android:minHeight="0dp"
+            android:text="启动模拟"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+    </LinearLayout>
+</layout>

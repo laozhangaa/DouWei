@@ -1,0 +1,42 @@
+{
+  "applicationName": "豆位",
+  "version": "2.5.18",
+  "versionCode": 268,
+  "package": "com.laozhang.mockgps",
+  "apkFile": "豆位-2.5.18-双地图版.apk",
+  "bytes": 64367338,
+  "sha256": "7b351e13ffdf4a517b313f7de2c11479354908f91093f31577a465d9ccd2f012",
+  "certificateSha1": "B4:42:7A:64:7C:8A:92:04:D6:00:72:AD:1B:98:8C:5F:18:EC:57:E7",
+  "signatureV1V2": true,
+  "zipalign": true,
+  "noBundledMapCredentials": true,
+  "noCredentialManifestMetadata": true,
+  "unitTests": 103,
+  "testFailures": 0,
+  "testErrors": 0,
+  "skippedTests": 0,
+  "lintErrors": 0,
+  "lintWarnings": 230,
+  "deviceVerification": {
+    "signedUpgradeInstalled": true,
+    "baiduDrivingRouteAndOfficialLightCount": true,
+    "amapDrivingPreferenceAndOfficialLightCount": true,
+    "amapWalkingAndCyclingRoutes": true,
+    "backgroundPlayback": true,
+    "pauseSeekRemainsPaused": true,
+    "manualRecoveryAfterProcessRestart": true,
+    "restartingAppDoesNotAutoStartMock": true,
+    "terminalZeroSpeedAndHoldState": true,
+    "completedRouteNotOfferedForRecovery": true,
+    "stopClearsRecovery": true,
+    "positionBackupDuplicateImport": true,
+    "fullRouteBackupRoundTrip": true,
+    "backupExcludesCredentials": true
+  },
+  "limitations": [
+    "Official SDK route choices can differ from official map apps.",
+    "Traffic-light count comes from the route SDK; stops and their positions are simulated.",
+    "No real-time signal colour or countdown is connected.",
+    "Third-party app compatibility depends on device and app behaviour."
+  ]
+}

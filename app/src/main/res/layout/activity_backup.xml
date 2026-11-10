@@ -1,0 +1,23 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data />
+    <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:background="@color/home_background">
+        <androidx.appcompat.widget.Toolbar android:id="@+id/toolbar_backup" android:layout_width="match_parent" android:layout_height="56dp" android:background="@color/white" app:title="收藏备份" app:titleTextColor="@color/home_text_primary" app:navigationIcon="@drawable/ic_map_back" app:navigationContentDescription="返回" />
+        <ScrollView android:layout_width="match_parent" android:layout_height="match_parent" android:fillViewport="true">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="18dp">
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="地点和路线，换机也能继续用" android:textSize="18sp" android:textStyle="bold" android:textColor="@color/home_text_primary" />
+                <TextView android:id="@+id/tv_backup_counts" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:text="正在读取收藏…" android:textSize="13sp" android:textColor="@color/home_text_secondary" />
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="22dp" android:padding="18dp" android:orientation="vertical" android:background="@drawable/shape_round_18_color_white">
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="保存一份收藏副本" android:textSize="15sp" android:textStyle="bold" android:textColor="@color/home_text_primary" />
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="包含收藏位置、完整道路、地图来源、出行方式和行驶设置。可保存到手机文件或你选择的云盘，地图 Key、AK 不会导出。" android:textSize="13sp" android:lineSpacingExtra="4dp" android:textColor="@color/home_text_secondary" />
+                    <androidx.appcompat.widget.AppCompatButton android:id="@+id/btn_export_favorites" android:layout_width="match_parent" android:layout_height="48dp" android:layout_marginTop="18dp" android:minHeight="0dp" android:background="@drawable/shape_round_30_color_primary" android:text="导出收藏" android:textSize="14sp" android:textAllCaps="false" android:textColor="@color/white" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="16dp" android:padding="18dp" android:orientation="vertical" android:background="@drawable/shape_round_18_color_white">
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="从备份恢复收藏" android:textSize="15sp" android:textStyle="bold" android:textColor="@color/home_text_primary" />
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="选择豆位导出的 JSON 文件，确认后合并导入。已有收藏保留，重复地点和道路会跳过；路线使用原来保存的轨迹。" android:textSize="13sp" android:lineSpacingExtra="4dp" android:textColor="@color/home_text_secondary" />
+                    <androidx.appcompat.widget.AppCompatButton android:id="@+id/btn_import_favorites" android:layout_width="match_parent" android:layout_height="48dp" android:layout_marginTop="18dp" android:minHeight="0dp" android:background="@drawable/bg_route_action" android:text="选择备份文件" android:textSize="14sp" android:textAllCaps="false" android:textColor="@color/master_color" />
+                </LinearLayout>
+                <TextView android:id="@+id/tv_backup_result" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="18dp" android:text="支持豆位收藏备份 v1，文件最大 16 MB。" android:textSize="12sp" android:lineSpacingExtra="4dp" android:textColor="@color/home_text_secondary" android:accessibilityLiveRegion="polite" />
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</layout>

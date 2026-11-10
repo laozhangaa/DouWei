@@ -1,0 +1,8 @@
+# Copy to local.properties. Never commit local.properties or your signing file.
+# Use forward slashes for Windows paths; escape any non-ASCII path for Java Properties.
+sdk.dir=D:/Android/SDK
+SIGNING_STORE_FILE=D:/private/your-release.jks
+SIGNING_KEY_ALIAS=your-alias
+SIGNING_STORE_PASSWORD=replace-with-your-store-password
+SIGNING_KEY_PASSWORD=replace-with-your-key-password
+# Map credentials are entered inside the app, not in this file.

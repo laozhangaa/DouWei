@@ -1,0 +1,7 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="80dp" android:background="?attr/selectableItemBackground" android:gravity="center_vertical" android:orientation="horizontal" android:paddingVertical="12dp">
+    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:paddingEnd="4dp">
+        <TextView android:id="@+id/tv_favorite_name" android:layout_width="match_parent" android:layout_height="wrap_content" android:ellipsize="end" android:maxLines="2" android:textColor="@color/home_text_primary" android:textSize="14sp" android:textStyle="bold"/>
+        <TextView android:id="@+id/tv_favorite_detail" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:ellipsize="end" android:maxLines="3" android:textColor="@color/home_text_secondary" android:textSize="11sp"/>
+    </LinearLayout>
+    <ImageButton android:id="@+id/btn_favorite_manage" android:layout_width="44dp" android:layout_height="48dp" android:background="?attr/selectableItemBackgroundBorderless" android:padding="12dp" android:contentDescription="管理收藏" android:src="@drawable/ic_favorite_more"/>
+</LinearLayout>

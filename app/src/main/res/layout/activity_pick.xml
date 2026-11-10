@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable name="clicklistener" type="OnClickListener" />
+        <variable name="isShowSearch" type="Boolean" />
+        <variable name="city" type="String" />
+        <import type="android.view.View.OnClickListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+        <com.laozhang.mockgps.widget.AppMapView
+            android:id="@+id/mapview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_back"
+            clickListener="@{clicklistener}"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_map_control"
+            android:contentDescription="返回"
+            android:elevation="2dp"
+            android:padding="10dp"
+            android:src="@drawable/ic_map_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/ll_search"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="vertical"
+            app:layout_constraintStart_toEndOf="@id/iv_back"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:background="@drawable/bg_map_control"
+                android:elevation="2dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="12dp"
+                android:paddingEnd="4dp">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_search_city"
+                    clickListener="@{clicklistener}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="?attr/selectableItemBackground"
+                    android:drawableEnd="@drawable/ic_city_dropdown"
+                    android:drawablePadding="3dp"
+                    android:ellipsize="end"
+                    android:gravity="center_vertical"
+                    android:maxWidth="82dp"
+                    android:singleLine="true"
+                    android:text="@{city,default=全国}"
+                    android:textColor="#405166"
+                    android:textSize="12sp" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="16dp"
+                    android:layout_marginHorizontal="9dp"
+                    android:background="#E2E7ED" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/et_search"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:hint="搜索地点"
+                    android:imeOptions="actionSearch"
+                    android:inputType="text"
+                    android:padding="0dp"
+                    android:singleLine="true"
+                    android:textColor="@color/black_80"
+                    android:textColorHint="#8995A4"
+                    android:textSize="13sp" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_search"
+                    clickListener="@{clicklistener}"
+                    android:layout_width="36dp"
+                    android:layout_height="match_parent"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="搜索地点"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_map_search" />
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler"
+                android:layout_width="match_parent"
+                android:layout_height="240dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/shape_round_18_color_white"
+                android:clipToOutline="true"
+                android:elevation="2dp"
+                android:overScrollMode="never"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="30dp"
+            android:layout_height="40dp"
+            android:importantForAccessibility="no"
+            android:src="@drawable/ic_map_pin"
+            android:translationY="-18dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_input"
+            clickListener="@{clicklistener}"
+            android:layout_width="76dp"
+            android:layout_height="44dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/bg_map_control"
+            android:elevation="2dp"
+            android:gravity="center"
+            android:text="经纬度"
+            android:textColor="#405166"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@id/location_button"
+            app:layout_constraintEnd_toStartOf="@id/location_button" />
+
+        <FrameLayout
+            android:id="@+id/location_button"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/bg_map_control"
+            android:elevation="2dp"
+            app:layout_constraintBottom_toTopOf="@id/bottom"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_cur_location"
+                clickListener="@{clicklistener}"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="定位到当前位置"
+                android:padding="11dp"
+                android:src="@drawable/ic_map_locate" />
+
+            <ProgressBar
+                android:id="@+id/location_progress"
+                style="?android:attr/progressBarStyleSmall"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_gravity="center"
+                android:indeterminateTint="@color/master_color"
+                android:visibility="gone" />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/location_status"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginBottom="10dp"
+            android:accessibilityLiveRegion="polite"
+            android:background="@drawable/shape_round_18_color_white"
+            android:maxLines="3"
+            android:padding="12dp"
+            android:textColor="#405166"
+            android:textSize="12sp"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/location_button" />
+
+        <LinearLayout
+            android:id="@+id/bottom"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:background="@drawable/shape_round_18_color_white"
+            android:clickable="true"
+            android:elevation="3dp"
+            android:orientation="vertical"
+            android:padding="18dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="选定位置"
+                android:textColor="@color/master_color"
+                android:textSize="11sp" />
+
+            <TextView
+                android:id="@+id/tv_poi_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:ellipsize="end"
+                android:lineSpacingExtra="2dp"
+                android:maxLines="3"
+                android:text="拖动地图选择地点"
+                android:textColor="@color/black_80"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_lonlat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:fontFeatureSettings="tnum"
+                android:maxLines="2"
+                android:textColor="#7B8794"
+                android:textSize="11sp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/confirm_location"
+                clickListener="@{clicklistener}"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_marginTop="16dp"
+                android:alpha="0.5"
+                android:background="@drawable/shape_round_30_color_primary"
+                android:enabled="false"
+                android:minHeight="0dp"
+                android:text="确认位置"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

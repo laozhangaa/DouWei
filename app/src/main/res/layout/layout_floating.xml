@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:minHeight="46dp"
+    android:orientation="horizontal">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/info"
+        android:layout_width="52dp"
+        android:layout_height="60dp"
+        android:layout_margin="-6dp"
+        android:background="@drawable/shape_round_10_color_black_30_right"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/spacer"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/info_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.75" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/startAndPause"
+            android:layout_width="30dp"
+            android:layout_height="20dp"
+            android:padding="3dp"
+            android:src="@drawable/selector_floating_play"
+            app:layout_constraintBottom_toTopOf="@id/iv_rest"
+            app:layout_constraintLeft_toLeftOf="@id/info_guideline"
+            app:layout_constraintRight_toRightOf="@id/info_guideline"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_rest"
+            android:layout_width="30dp"
+            android:layout_height="20dp"
+            android:padding="3dp"
+            android:src="@drawable/ic_refresh"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@id/iv_adjust"
+            app:layout_constraintLeft_toLeftOf="@id/info_guideline"
+            app:layout_constraintRight_toRightOf="@id/info_guideline"
+            app:layout_constraintTop_toBottomOf="@id/startAndPause"
+            tools:visibility="visible" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_adjust"
+            android:layout_width="30dp"
+            android:layout_height="20dp"
+            android:padding="3dp"
+            android:src="@drawable/ic_location_adjust"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="@id/info_guideline"
+            app:layout_constraintRight_toRightOf="@id/info_guideline"
+            app:layout_constraintTop_toBottomOf="@id/iv_rest"
+            tools:visibility="visible" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.legacy.widget.Space
+        android:id="@+id/spacer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@id/card"
+        app:layout_constraintLeft_toLeftOf="@id/card"
+        app:layout_constraintRight_toRightOf="@id/card"
+        app:layout_constraintTop_toTopOf="@id/card" />
+
+
+    <com.laozhang.mockgps.widget.FloatingCardView
+        android:id="@+id/card"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_margin="5dp"
+        android:elevation="2dp"
+        android:translationZ="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.laozhang.mockgps.widget.AppMapView
+            android:id="@+id/mapview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </com.laozhang.mockgps.widget.FloatingCardView>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_setting"
+        android:layout_width="28dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="-10dp"
+        android:layout_marginBottom="2dp"
+        android:background="@drawable/shape_round_30_color_master"
+        android:elevation="0dp"
+        android:gravity="center"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="4dp"
+        android:contentDescription="悬浮窗控制"
+        android:src="@drawable/ic_floating_setting"
+        android:translationZ="2dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="@id/card"
+        app:layout_constraintRight_toRightOf="@id/card"
+        app:layout_constraintTop_toBottomOf="@id/card"
+        tools:visibility="visible" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
